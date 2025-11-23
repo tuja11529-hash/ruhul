@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prank Love Question</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffdde1;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background: #00c6ff;
+            color: white;
+            position: absolute;
+        }
+
+        #noBtn {
+            background: red;
+            color: white;
+        }
+
+        /* Popup */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+        }
+
+        #popup div {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Do you love me? ❤️</h1>
+
+    <button id="yesBtn" class="btn">YES</button>
+    <button id="noBtn" class="btn">NO</button>
+
+    <!-- Popup -->
+    <div id="popup">
+        <div>😡💔😡💔😡<br>
+            <p style="font-size:25px;">I knew it... 😭</p>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+        const popup = document.getElementById("popup");
+
+        // When hovering on YES -> run away
+        yesBtn.addEventListener("mouseover", () => {
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 150);
+            yesBtn.style.left = x + "px";
+            yesBtn.style.top = y + "px";
+        });
+
+        // Clicking YES should ALSO dodge
+        yesBtn.addEventListener("click", () => {
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 150);
+            yesBtn.style.left = x + "px";
+            yesBtn.style.top = y + "px";
+        });
+
+        // NO button works → shows popup
+        noBtn.addEventListener("click", () => {
+            popup.style.display = "flex";
+        });
+
+        // Close popup on click
+        popup.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>
